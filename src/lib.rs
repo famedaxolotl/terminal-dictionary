@@ -89,7 +89,13 @@ pub fn get_json(search_word: &String) -> Result<WordInfo, Box<dyn std::error::Er
 }
 
 pub fn get_dictionary(word_info: WordInfo) -> (){
-    println!("Printing dictionary: {}", word_info.word);
+    for meaning in word_info.meanings{
+        println!("{}-----------{}", word_info.word.to_uppercase(), meaning.part_of_speech.to_ascii_uppercase());
+        for def_obj in meaning.definitions{
+            println!("{}", def_obj.definition);
+            println!("Example: {}\n", def_obj.example.unwrap_or("N/A".to_string()));
+        }
+    }
 }
 
 pub fn get_thesaurus(word_info: WordInfo) -> (){
