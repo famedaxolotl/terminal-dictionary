@@ -1,5 +1,5 @@
 [package]
-name = "td"
+name = "terminal-dictionary"
 version = "0.1.0"
 authors = ["Axolotl rishavghosh2007@gmail.com"]
 edition = "2021"
@@ -7,13 +7,15 @@ description = "Simple Dictionary on the terminal"
 license = "MIT"
 readme="README.md"
 repository = "https://github.com/famedaxolotl/terminal-dictionary"
-keywords = ["wget", "cli", "caie", "igcse", "past-papers"]
+keywords = ["dictionary", "cli", "api-client", "thesaurus"]
 
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[[bin]]
+name = "td"
+path = "src/main.rs"
 
 [dependencies]
 clap = { version = "4.5.9", features = ["cargo"] }
+colored = "2.1.0"
 serde = { version = "1.0.204", features = ["derive"] }
 serde_json = "1.0.120"
 ureq = "2.10.0"

@@ -1,10 +1,12 @@
-use std::io::Write;
-
+use colored::Colorize;
 use clap::{command, Arg, Command};
 use serde::Deserialize;
-use serde_json;
+// use serde_json;
 
 #[derive(Debug)]
+// This enum tells the main function which 
+// print method (dictionary or thesaurus) needs to be used
+// get_config returns this
 pub enum QueryType{
     Dictionary(String),
     Thesaurus(String),
@@ -36,7 +38,7 @@ pub fn get_config()-> Result<QueryType, Box<dyn std::error::Error>> {
         )
     ).get_matches();
 
-    let mut query_type: QueryType;
+    let query_type: QueryType;
 
 
     if let Some(def_matches) = matches.subcommand_matches("def") {
@@ -57,6 +59,9 @@ pub fn get_config()-> Result<QueryType, Box<dyn std::error::Error>> {
     Ok(query_type)
 }
 
+// these are the structs the api response deserializes into
+// '->' means 'contains'
+// Wordinfo -> Singlemeaning -> Definition
 #[derive(Debug, Deserialize, Clone)]
 pub struct WordInfo{
     word: String,
@@ -85,20 +90,20 @@ pub fn get_json(search_word: &String) -> Result<WordInfo, Box<dyn std::error::Er
 
     let word_info: Vec<WordInfo> = serde_json::from_str(&res)?;
 
-    Ok(word_info.get(0).unwrap().clone())
+    Ok(word_info.first().unwrap().clone())
 }
 
-pub fn get_dictionary(word_info: WordInfo) -> (){
+pub fn get_dictionary(word_info: WordInfo){
     for meaning in word_info.meanings{
-        println!("{}-----------{}", word_info.word.to_uppercase(), meaning.part_of_speech.to_ascii_uppercase());
+        println!("{}-----------{}", word_info.word.to_uppercase().green(), meaning.part_of_speech.to_ascii_uppercase().green());
         for def_obj in meaning.definitions{
             println!("{}", def_obj.definition);
-            println!("Example: {}\n", def_obj.example.unwrap_or("N/A".to_string()));
+            println!("Example: {}\n", def_obj.example.unwrap_or("N/A".to_string()).blue());
         }
     }
 }
 
-pub fn get_thesaurus(word_info: WordInfo) -> (){
+pub fn get_thesaurus(word_info: WordInfo){
     let mut syn_list: String = String::new();
     let mut ant_list: String = String::new();
 
@@ -112,8 +117,7 @@ pub fn get_thesaurus(word_info: WordInfo) -> (){
         }
     }
 
-    println!("Synonyms and antonyms for {}", word_info.word.to_uppercase());
+    println!("Synonyms and antonyms for {}", word_info.word.to_uppercase().green());
     println!("Synonyms: {}", syn_list);
     println!("Antonyms: {}", ant_list);
-    // std::io::stdout().flush().unwrap();
 }

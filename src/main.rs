@@ -1,17 +1,27 @@
+#![allow(special_module_name)]
 pub mod lib;
 use lib::{get_config, get_json, QueryType, get_dictionary, get_thesaurus};
+use std::process;
 
 fn main() {
-    let config = get_config().unwrap();
-    println!("{:?}", config);
-
+    let config = get_config().unwrap_or_else(|error| {
+        eprintln!("{}", error);
+        process::exit(1);
+    });
+    
 match config{
         QueryType::Dictionary(word) => {
-            let word_info = get_json(&word).unwrap();
+            let word_info = get_json(&word).unwrap_or_else(|error| {
+                eprintln!("{}", error);
+                process::exit(1);
+            });
             get_dictionary(word_info);
         },
         QueryType::Thesaurus(word) => {
-            let word_info = get_json(&word).unwrap();
+            let word_info = get_json(&word).unwrap_or_else(|error| {
+                eprintln!("{}", error);
+                process::exit(1);
+            });
             get_thesaurus(word_info);
         }
     };
