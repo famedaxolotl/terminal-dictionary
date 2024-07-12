@@ -18,7 +18,7 @@ td thes <word>
 
 to-do list:
 
-- finish the arg parser
-- create the various structs to handle json data
+- ~~ finish the arg parser ~~
+- ~~ create the various structs to handle json data ~~
 - deserialise the json data into those struct
 - print those in dictionary style in the std out
