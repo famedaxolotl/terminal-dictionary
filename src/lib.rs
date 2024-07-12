@@ -1,13 +1,13 @@
 use clap::{command, Arg, Command};
 use serde::{Deserialize};
 use serde_json;
-// pub trait ResType{
-//     fn print(&self) -> Result<(), Box<dyn std::error::Error>>;
-// }
 
+pub enum QueryType{
+    Dictionary(String),
+    Thesaurus(String),
+}
 
-
-pub fn get_config()-> Result<String, Box<dyn std::error::Error>> {
+pub fn get_config()-> Result<QueryType, Box<dyn std::error::Error>> {
     let matches = command!()
     .about("Simple Dictionary on the terminal.")
     .version("0.1.0")
@@ -33,15 +33,24 @@ pub fn get_config()-> Result<String, Box<dyn std::error::Error>> {
         )
     ).get_matches();
 
+    // let mut query_type: QueryType;
+
     if let Some(def_matches) = matches.subcommand_matches("def") {
         if let Some(def_word) = def_matches.get_one::<String>("def_word") {
-            Ok(def_word.clone())
+            return Ok(QueryType::Dictionary(def_word.clone()))
         }else {
-            Err("Invalid word entered".into())
+            return Err("Invalid word entered".into())
+        }
+    }else if let Some(thes_matches) = matches.subcommand_matches("thes") {
+        if let Some(thes_word) = thes_matches.get_one::<String>("thes_word") {
+            Ok(QueryType::Dictionary(thes_word.clone()))
+        }else {
+            return Err("Invalid word entered".into())
         }
     }else{
-        Err("Soething went wrong".into())
+        return Err("Couldn't read command".into())
     }
+    // Ok(query_type)
 }
 
 #[derive(Debug, Deserialize, Clone)]
