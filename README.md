@@ -49,3 +49,38 @@ Now, run with `cargo run` or move the binary to `/usr/bin` with:
 `sudo mv target/release/td /usr/local/bin`
 
 Alternatively for (1) and (3), you can add the Downloads folder to `$PATH` by editing the `./bashrc` file.
+
+## Usage
+
+### 1.Dictionary
+
+Use the `def` command to search dictionary:
+
+```bash
+td def hobby
+```
+Output:
+```
+HOBBY-----------NOUN
+An activity that one enjoys doing in one's spare time.
+Example: I like to collect stamps from different countries as a hobby.
+
+An extinct breed of horse native to the British Isles, also known as the Irish Hobby
+Example: N/A
+```
+
+### 2. Thesaurus
+
+Use the `thes` command to search synonyms and antonyms
+
+```sh
+td thes gregarious
+```
+
+Output:
+
+```
+Synonyms and antonyms for GREGARIOUS
+Synonyms: outgoing, sociable, social, 
+Antonyms: ungregarious, nongregarious,
+```
