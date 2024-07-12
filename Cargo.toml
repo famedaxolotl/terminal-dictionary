@@ -1,6 +1,6 @@
 [package]
 name = "terminal-dictionary"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Axolotl rishavghosh2007@gmail.com"]
 edition = "2021"
 description = "Simple Dictionary on the terminal"
