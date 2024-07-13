@@ -58,9 +58,12 @@ Use the `def` command to search dictionary:
 
 ```bash
 td def hobby
+
 ```
+
 Output:
-```
+
+```bash
 HOBBY-----------NOUN
 An activity that one enjoys doing in one's spare time.
 Example: I like to collect stamps from different countries as a hobby.
@@ -79,7 +82,7 @@ td thes gregarious
 
 Output:
 
-```
+```bass
 Synonyms and antonyms for GREGARIOUS
 Synonyms: outgoing, sociable, social, 
 Antonyms: ungregarious, nongregarious,

@@ -12,51 +12,53 @@ pub enum QueryType{
     Thesaurus(String),
 }
 
-pub fn get_config()-> Result<QueryType, Box<dyn std::error::Error>> {
-    let matches = command!()
-    .about("Simple Dictionary on the terminal.")
-    .version("0.1.0")
-    .author("Axolotl rishavghosh2007@gmail.com")
-    .subcommand(
-        Command::new("def")
-        .about("search dictionary")
-        .arg(
-            Arg::new("def_word")
-            .help("word to search in dictionary")
-            .required(true)
-            .index(1)
+impl QueryType{
+    pub fn new()-> Result<QueryType, Box<dyn std::error::Error>>{
+        let matches = command!()
+        .about("Simple Dictionary on the terminal.")
+        .version("0.1.0")
+        .author("Axolotl rishavghosh2007@gmail.com")
+        .subcommand(
+            Command::new("def")
+            .about("search dictionary")
+            .arg(
+                Arg::new("def_word")
+                .help("word to search in dictionary")
+                .required(true)
+                .index(1)
+            )
         )
-    )
-    .subcommand(
-        Command::new("thes")
-        .about("search thesaurus")
-        .arg(
-            Arg::new("thes_word")
-            .help("word to search in thesaurus")
-            .required(true)
-            .index(1)
-        )
-    ).get_matches();
-
-    let query_type: QueryType;
-
-
-    if let Some(def_matches) = matches.subcommand_matches("def") {
-        if let Some(def_word) = def_matches.get_one::<String>("def_word") {
-            query_type = QueryType::Dictionary(def_word.to_string());
+        .subcommand(
+            Command::new("thes")
+            .about("search thesaurus")
+            .arg(
+                Arg::new("thes_word")
+                .help("word to search in thesaurus")
+                .required(true)
+                .index(1)
+            )
+        ).get_matches();
+    
+        let query_type: QueryType;
+    
+    
+        if let Some(def_matches) = matches.subcommand_matches("def") {
+            if let Some(def_word) = def_matches.get_one::<String>("def_word") {
+                query_type = QueryType::Dictionary(def_word.to_string());
+            } else {
+                return Err("Invalid word entered for def".into());
+            }
+        } else if let Some(thes_matches) = matches.subcommand_matches("thes") {
+            if let Some(thes_word) = thes_matches.get_one::<String>("thes_word") {
+                query_type = QueryType::Thesaurus(thes_word.to_string());
+            } else {
+                return Err("Invalid word entered for thes".into());
+            }
         } else {
-            return Err("Invalid word entered for def".into());
+            return Err("No subcommand was used".into());
         }
-    } else if let Some(thes_matches) = matches.subcommand_matches("thes") {
-        if let Some(thes_word) = thes_matches.get_one::<String>("thes_word") {
-            query_type = QueryType::Thesaurus(thes_word.to_string());
-        } else {
-            return Err("Invalid word entered for thes".into());
-        }
-    } else {
-        return Err("No subcommand was used".into());
+        Ok(query_type)
     }
-    Ok(query_type)
 }
 
 // these are the structs the api response deserializes into
@@ -97,7 +99,7 @@ pub fn get_dictionary(word_info: WordInfo){
     for meaning in word_info.meanings{
         println!("{}-----------{}", word_info.word.to_uppercase().green(), meaning.part_of_speech.to_ascii_uppercase().green());
         for def_obj in meaning.definitions{
-            println!("{}", def_obj.definition);
+            println!("{}", def_obj.definition.bold());
             println!("Example: {}\n", def_obj.example.unwrap_or("N/A".to_string()).blue());
         }
     }
