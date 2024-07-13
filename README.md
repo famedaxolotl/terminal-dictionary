@@ -1,6 +1,6 @@
 # terminal-dictionary (td)
 
-[![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?logo=github)](https://github.com/famedaxolotl) [![crates.io](https://img.shields.io/crates/v/terminal-dictionary.svg)](https://crates.io/crates/terminal-dictionary) [![Total Downloads](https://img.shields.io/crates/d/terminal-dictionary.svg)](https://crates.io/crates/terminal-dictionary) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?logo=github)](https://github.com/famedaxolotl) [![crates.io](https://img.shields.io/crates/v/terminal-dictionary.svg)](https://crates.io/crates/terminal-dictionary) [![Total Downloads](https://img.shields.io/crates/d/terminal-dictionary.svg)](https://crates.io/crates/terminal-dictionary) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Build](https://github.com/famedaxolotl/terminal-dictionary/actions/workflows/rust.yml/badge.svg)](https://github.com/famedaxolotl/terminal-dictionary/releases)
 
 This project uses the [freeDictionaryAPI](https://github.com/meetDeveloper/freeDictionaryAPI). Please support its author if you can.
 
@@ -52,7 +52,7 @@ Alternatively for (1) and (3), you can add the Downloads folder to `$PATH` by ed
 
 ## Usage
 
-### 1.Dictionary
+### 1. Dictionary
 
 Use the `def` command to search dictionary:
 
@@ -74,7 +74,7 @@ Example: N/A
 
 ### 2. Thesaurus
 
-Use the `thes` command to search synonyms and antonyms
+Use the `thes` command to search synonyms and antonyms:
 
 ```sh
 td thes gregarious
@@ -82,7 +82,7 @@ td thes gregarious
 
 Output:
 
-```bass
+```bash
 Synonyms and antonyms for GREGARIOUS
 Synonyms: outgoing, sociable, social, 
 Antonyms: ungregarious, nongregarious,
