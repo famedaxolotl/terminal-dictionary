@@ -70,6 +70,37 @@ pub struct WordInfo{
     meanings: Vec<SingleMeaning>,
 }
 
+impl WordInfo{
+    pub fn dictionary(&self){
+        for meaning in self.meanings.iter(){
+            println!("{}-----------{}", self.word.to_uppercase().green(), meaning.part_of_speech.to_ascii_uppercase().green());
+            for def_obj in meaning.definitions.iter(){
+                println!("{}", def_obj.definition.bold());
+                println!("Example: {}\n", def_obj.example.clone().unwrap_or("N/A".to_string()).blue());
+            }
+        }
+    }
+
+    pub fn thesaurus(&self){
+        let mut syn_list: String = String::new();
+        let mut ant_list: String = String::new();
+    
+        for meaning in self.meanings.iter(){
+            for syn in meaning.synonyms.iter(){
+                syn_list.push_str(format!("{}, ", syn).as_str());
+            }
+    
+            for ant in meaning.antonyms.iter(){
+                ant_list.push_str(format!("{}, ", ant).as_str());
+            }
+        }
+    
+        println!("Synonyms and antonyms for {}", self.word.to_uppercase().green());
+        println!("Synonyms: {}", syn_list);
+        println!("Antonyms: {}", ant_list);
+    }
+}
+
 #[derive(Debug, Deserialize, Clone)]
 pub struct SingleMeaning{
     #[serde(rename = "partOfSpeech")]
@@ -93,33 +124,4 @@ pub fn get_json(search_word: &String) -> Result<WordInfo, Box<dyn std::error::Er
     let word_info: Vec<WordInfo> = serde_json::from_str(&res)?;
 
     Ok(word_info.first().unwrap().clone())
-}
-
-pub fn get_dictionary(word_info: WordInfo){
-    for meaning in word_info.meanings{
-        println!("{}-----------{}", word_info.word.to_uppercase().green(), meaning.part_of_speech.to_ascii_uppercase().green());
-        for def_obj in meaning.definitions{
-            println!("{}", def_obj.definition.bold());
-            println!("Example: {}\n", def_obj.example.unwrap_or("N/A".to_string()).blue());
-        }
-    }
-}
-
-pub fn get_thesaurus(word_info: WordInfo){
-    let mut syn_list: String = String::new();
-    let mut ant_list: String = String::new();
-
-    for meaning in word_info.meanings{
-        for syn in meaning.synonyms{
-            syn_list.push_str(format!("{}, ", syn).as_str());
-        }
-
-        for ant in meaning.antonyms{
-            ant_list.push_str(format!("{}, ", ant).as_str());
-        }
-    }
-
-    println!("Synonyms and antonyms for {}", word_info.word.to_uppercase().green());
-    println!("Synonyms: {}", syn_list);
-    println!("Antonyms: {}", ant_list);
 }

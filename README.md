@@ -4,7 +4,7 @@
 
 This project uses the [freeDictionaryAPI](https://github.com/meetDeveloper/freeDictionaryAPI). Please support its author if you can.
 
-terminal-dictionary is a simple dictionary and thesaurus tool written in Rust for the command-line. See Installation and Usage for more.
+Ever wanted to search te dictionary right from the terminal? No? Well anyway, terminal-dictionary is a simple dictionary and thesaurus tool written in Rust for the command-line. See Installation and Usage for more.
 
 ## Installation
 
