@@ -1,10 +1,14 @@
 # terminal-dictionary (td)
 
-[![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?logo=github)](https://github.com/famedaxolotl) [![crates.io](https://img.shields.io/crates/v/terminal-dictionary.svg)](https://crates.io/crates/terminal-dictionary) [![Total Downloads](https://img.shields.io/crates/d/terminal-dictionary.svg)](https://crates.io/crates/terminal-dictionary) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Build](https://github.com/famedaxolotl/terminal-dictionary/actions/workflows/rust.yml/badge.svg)](https://github.com/famedaxolotl/terminal-dictionary/releases)
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?logo=github)](https://github.com/famedaxolotl)
+[![crates.io](https://img.shields.io/crates/v/terminal-dictionary.svg)](https://crates.io/crates/terminal-dictionary)
+[![Total Downloads](https://img.shields.io/crates/d/terminal-dictionary.svg)](https://crates.io/crates/terminal-dictionary)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Build](https://github.com/famedaxolotl/terminal-dictionary/actions/workflows/rust.yml/badge.svg)](https://github.com/famedaxolotl/terminal-dictionary/releases)
 
 This project uses the [freeDictionaryAPI](https://github.com/meetDeveloper/freeDictionaryAPI). Please support its author if you can.
 
-Ever wanted to search te dictionary right from the terminal? No? Well anyway, terminal-dictionary is a simple dictionary and thesaurus tool written in Rust for the command-line. See Installation and Usage for more.
+Ever wanted to search the dictionary right from the terminal? No? Well anyway, terminal-dictionary is a simple dictionary and thesaurus tool written in Rust for the command-line. See Installation and Usage for more.
 
 ## Installation
 
