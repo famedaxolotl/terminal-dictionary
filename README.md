@@ -6,6 +6,10 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build](https://github.com/famedaxolotl/terminal-dictionary/actions/workflows/rust.yml/badge.svg)](https://github.com/famedaxolotl/terminal-dictionary/releases)
 
+![terminal_screenshot](https://github.com/user-attachments/assets/eb207741-4066-461e-bcf9-8c6c391d6a74)
+![terminal_screenshot2](https://github.com/user-attachments/assets/a06da805-0d37-4d30-a13c-6f0ce1c13d0e)
+
+
 This project uses the [freeDictionaryAPI](https://github.com/meetDeveloper/freeDictionaryAPI). Please support its author if you can.
 
 Ever wanted to search the dictionary right from the terminal? No? Well anyway, terminal-dictionary is a simple dictionary and thesaurus tool written in Rust for the command-line. See Installation and Usage for more.
