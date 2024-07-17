@@ -1,6 +1,4 @@
-#![allow(special_module_name)]
-pub mod lib;
-use lib::{get_json, QueryType};
+use terminal_dictionary::{get_json, QueryType};
 use std::process;
 
 fn main() {

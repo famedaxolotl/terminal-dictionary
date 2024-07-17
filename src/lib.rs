@@ -46,13 +46,13 @@ impl QueryType{
             if let Some(def_word) = def_matches.get_one::<String>("def_word") {
                 query_type = QueryType::Dictionary(def_word.to_string());
             } else {
-                return Err("Invalid word entered for def".into());
+                return Err("Invalid word entered for `def`".into());
             }
         } else if let Some(thes_matches) = matches.subcommand_matches("thes") {
             if let Some(thes_word) = thes_matches.get_one::<String>("thes_word") {
                 query_type = QueryType::Thesaurus(thes_word.to_string());
             } else {
-                return Err("Invalid word entered for thes".into());
+                return Err("Invalid word entered for `thes`".into());
             }
         } else {
             return Err("No subcommand was used".into());
@@ -60,7 +60,6 @@ impl QueryType{
         Ok(query_type)
     }
 }
-
 // these are the structs the api response deserializes into
 // '->' means 'contains'
 // Wordinfo -> Singlemeaning -> Definition
@@ -73,10 +72,10 @@ pub struct WordInfo{
 impl WordInfo{
     pub fn dictionary(&self){
         for meaning in self.meanings.iter(){
-            println!("{}-----------{}", self.word.to_uppercase().green(), meaning.part_of_speech.to_ascii_uppercase().green());
+            println!("{}-----------{}", self.word.to_uppercase().green().bold(), meaning.part_of_speech.to_ascii_uppercase().italic().green());
             for def_obj in meaning.definitions.iter(){
                 println!("{}", def_obj.definition.bold());
-                println!("Example: {}\n", def_obj.example.clone().unwrap_or("N/A".to_string()).blue());
+                println!("Example: {}\n", def_obj.example.clone().unwrap_or("N/A".to_string()).blue().italic());
             }
         }
     }
@@ -95,9 +94,9 @@ impl WordInfo{
             }
         }
     
-        println!("Synonyms and antonyms for {}", self.word.to_uppercase().green());
-        println!("Synonyms: {}", syn_list);
-        println!("Antonyms: {}", ant_list);
+        println!("Synonyms and antonyms for {}", self.word.to_uppercase().bold().italic().green());
+        println!("Synonyms: {}", syn_list.bold());
+        println!("Antonyms: {}", ant_list.bold());
     }
 }
 
