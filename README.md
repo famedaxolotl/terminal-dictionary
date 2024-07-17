@@ -6,9 +6,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build](https://github.com/famedaxolotl/terminal-dictionary/actions/workflows/rust.yml/badge.svg)](https://github.com/famedaxolotl/terminal-dictionary/releases)
 
-![terminal_screenshot](https://github.com/user-attachments/assets/eb207741-4066-461e-bcf9-8c6c391d6a74)
-![terminal_screenshot2](https://github.com/user-attachments/assets/a06da805-0d37-4d30-a13c-6f0ce1c13d0e)
-
+![terminal_screenshot3](https://github.com/user-attachments/assets/8f2d8ec5-1dd5-4e83-b903-b394d9f0c323)
+![terminal_screenshot4](https://github.com/user-attachments/assets/73e1099d-8c27-4010-93c5-66bf03ad8827)
 
 This project uses the [freeDictionaryAPI](https://github.com/meetDeveloper/freeDictionaryAPI). Please support its author if you can.
 
