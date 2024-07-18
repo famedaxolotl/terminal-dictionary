@@ -26,7 +26,7 @@ NOTE: The binary name is `td`, which is what you will use to execute it.
 - Move the binary `td` to `/usr/local/bin` with
 
 ```bash
-sudo mv /Downloads/td /usr/local/bin
+sudo mv Downloads/td /usr/local/bin
 ```
 
 ### 2. Using Cargo
@@ -64,7 +64,7 @@ Alternatively for (1) and (3), you can add the Downloads folder to `$PATH` by ed
 Use the `def` command to search dictionary:
 
 ```bash
-td def hobby
+$ td def hobby
 
 ```
 
@@ -84,7 +84,7 @@ Example: N/A
 Use the `thes` command to search synonyms and antonyms:
 
 ```sh
-td thes gregarious
+$ td thes gregarious
 ```
 
 Output:
